@@ -15,11 +15,11 @@ The goals / steps of this project are the following:
 * Estimate a bounding box for vehicles detected.
 
 [//]: # (Image References)
-[image1]: ./examples/example_data_set.jpg
+[image1]: ./examples/example_dta_set.jpg
 [image2]: ./examples/bin_spatial.jpg
 [image3]: ./examples/ycrb_hog.png
 [image4]: ./examples/color_histogram.jpg
-[image5]: ./examples/HOG_image.jpg
+[image5]: ./examples/Hog_image.jpg
 [image6]: ./examples/slide_window.jpg
 [image7]: ./examples/search_window.jpg
 [image8]: ./examples/sub_sampling_window.jpg
@@ -28,14 +28,12 @@ The goals / steps of this project are the following:
 [image11]: ./examples/final_sample.jpg
 [image12]: ./examples/video.jpg
 [image13]: ./examples/GridSearchCV.png
-[image14]: ./examples/heatmap_order.png
+[image14]: ./examples/heamap_order.png
 [video1]: ./project_video.mp4
 
 ### Final Video Posted here
-
+![Youtube image](http://img.youtube.com/vi/L5_a7KUzvbI/maxresdefault.jpg)
 [you tube video] (https://youtu.be/L5_a7KUzvbI)
-
-[Youtube Link](http://img.youtube.com/vi/L5_a7KUzvbI/maxresdefault.jpg)
 
 
 ### Histogram of Oriented Gradients (HOG)
@@ -65,9 +63,10 @@ Here is an example using the `RGB` color space and HOG parameters of `orientatio
 
 Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
 
-More references here
-1.[scikit hog feature](http://scikit-image.org/docs/dev/api/skimage.feature.html#skimage.feature.hog)
-2.[wikipedia page](https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients)
+More references here:
+
+1. [scikit hog feature](http://scikit-image.org/docs/dev/api/skimage.feature.html#skimage.feature.hog)
+2. [wikipedia page](https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients)
 
 ![YCRB HOG][image3]
 
@@ -105,14 +104,14 @@ def color_hist(img, nbins=32):
     hist3 = np.histogram(img[:,:,2], bins=nbins)
     return hist_features
  ```
- [color histogram][image4]
+ ![color histogram][image4]
  
 
 2. Spatial binning
 ```python
-def bin_spatial(img, size=(32,32)):```
-
-[spatial binning][image2]
+def bin_spatial(img, size=(32,32))
+```
+![spatial binning][image2]
 
 
 3. Extract the Color Features for car and non car objects.
@@ -159,6 +158,7 @@ We can classify the data using any of the below methods.
     [GridSearchCV Output][image13]
     
 3. [RandomizedSearchCV](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html)
+    
     Much slower but better than GridSearch CV, I ran into few issues choosing this, so did not proceed further.
 
 
@@ -176,7 +176,7 @@ Initially started with Sliding windows search where in I searched the entire ima
 
 Later I reduced the search space to 400 to 656 in y-axis with different scales such as 0.7 to 1.5 to find out the suitable range to reduce the false positives.
 
-![Sub Sampling Window][image14]
+![Sub Sampling Window][image8]
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
@@ -198,8 +198,10 @@ I tried many ways to arrive at the best detection methods
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
 Here's a [link to my video result](./project_result_final_v3.mp4)
 
+![Video][image12]
+![Youtube Link](http://img.youtube.com/vi/L5_a7KUzvbI/maxresdefault.jpg)
 [you tube video](https://youtu.be/L5_a7KUzvbI)
-[Youtube Link](http://img.youtube.com/vi/L5_a7KUzvbI/maxresdefault.jpg)
+
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
@@ -213,6 +215,8 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 ### Here the resulting bounding boxes are drawn onto the last frame in the series:
 ![Heatmap False Positive][image10]
+
+
 
 ---
 
@@ -238,7 +242,7 @@ Another aspect which I wanted to try is to use Real-time Object Detection with Y
 I am going to try out few experiements around it in the coming days : https://medium.com/@jonathan_hui/real-time-object-detection-with-yolo-yolov2-28b1b93e2088
 
 
-**Where the pipeline likely to fail ? **
+#### **Where the pipeline likely to fail ?**
 
 1. Poor light conditions. Rainy or extreme weather situations.
 
